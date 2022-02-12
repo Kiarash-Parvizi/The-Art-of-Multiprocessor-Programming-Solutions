@@ -122,3 +122,21 @@ for (auto& trd: trds) trd.join();
 ---
 
 ## Exercise 2:
+For each of the following, state whether it is a safety or liveness property. Identify the bad or good thing of interest.
+1. Patrons are served in the order they arrive: _safety_
+- bad thing that will never happen: Patrons are not served in the order they arrive
+2. What goes up must come down: _liveness_
+- good thing to happen: It will eventually come down
+3. If two or more processes are waiting to enter their critical sections, at least one succeeds: _liveness_
+- good thing to happen: At least one process succeeds entering and makes progress
+4. If an interrupt occurs, then a message is printed within one second: _safety_
+- bad thing that will never happen: An occurrence that is not recorded in one second.
+5. If an interrupt occurs, then a message is printed: _safety_
+- bad thing that will never happen: An occurrence that is not recorded.
+6. The cost of living never decreases: _safety_
+- bad thing that will never happen: cost of living decreases
+7. Two things are certain: death and taxes: _liveness_
+- good thing to happen: taxes and dead
+8. You can always tell a Harvard man: _safety_
+- bad thing that will never happen: You can't tell a Harvard man
+---
