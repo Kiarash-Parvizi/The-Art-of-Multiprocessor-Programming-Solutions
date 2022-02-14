@@ -140,3 +140,61 @@ For each of the following, state whether it is a safety or liveness property. Id
 8. You can always tell a Harvard man: _safety_
 - bad thing that will never happen: You can't tell a Harvard man
 ---
+
+## Exercise 3:
+In the producer–consumer fable, we assumed that Bob can see whether the can on Alice’s windowsill is up or down. Design a producer–consumer protocol using cans and strings that works even if Bob cannot see the state of Alice’s can (this is how real-world interrupt bits work).
+
+### Solution:
+Bob places a can on Alice's windowsill, ties one end of the string around the can and puts the other end in his house. Alice does the same thing so that she'll be able to notify Bob when pets finish eating and came back inside. Initially both cans are standing up, then Bob places some food in the yard and pulls his string.
+<br/>
+- From now on, when Alice wants to release the pets:
+1. She waits until the can on her side is down
+2. She releases the pets and resets the can on her windowsill
+3. When the pets finish the food and return, she pulls her string, knocking down the can on Bob's windowsill.
+<br/>
+- Bob does the following:
+1. He waits until the can on his side is down
+2. He puts food in the yard and resets the can on his windowsill
+3. He then pulls his string to notify Alice that there's food in the yard
+
+---
+
+## Exercise 4:
+You are one of P recently arrested prisoners. The warden, a deranged computer scientist, makes the following announcement:
+> You may meet together today and plan a strategy, but after today you will be in isolated cells and have no communication with one another.
+
+> I have set up a “switch room” which contains a light switch, which is either on or off. The switch is not connected to anything.
+
+> Every now and then, I will select one prisoner at random to enter the “switch room.” This prisoner may throw the switch (from on to off, or vice-versa), or may leave the switch unchanged. Nobody else will ever enter this room.
+
+> Each prisoner will visit the switch room arbitrarily often. More precisely, for any N, eventually each of you will visit the switch room at least N times.
+
+> At any time, any of you may declare: “we have all visited the switch room at least once.” If the claim is correct, I will set you free. If the claim is incorrect, I will feed all of you to the crocodiles. Choose wisely!
+
+### Solution:
+### <span style="color:#58CF8F">_The initial state of the switch is off_:</span>
+The idea is to select one of them as consumer and the others as producers. They have to follow the following protocol to ensure that they'll be free:<br/>
+
+Any producer when entering the room should:
+* Turn on the light if {It was off & He hasn't turned it on before }
+* Do nothing if {The lamp is already turned on}
+
+The consumer when entering the room should:
+* Turn off the light and count if { The lamp is on }, then if his mental number is equal to P-1, he should declare "all of us have been in the room at least once"
+* Do nothing if {The lamp is off}
+
+### <span style="color:#58CF8F">_You don't know the initial state of the switch_:</span>
+Any producer when entering the room should:
+* Turn on the light if {It was off & He has turned it on at most once before }
+* Do nothing if {The lamp is already turned on}
+
+The consumer when entering the room should:
+* Turn off the light and count if { The lamp is on }, then if his mental number is equal to 2*(P-1), he should declare "all of us have been in the room at least once"
+* Do nothing if {The lamp is off}
+
+Why 2*(P-1)?<br/>
+Because once he's reached this number he has either:
+- counted all other prisoners twice
+- or counted all other prisoners twice except for one which he's counted once. And the initial state of the lamp was 'on'
+
+---
