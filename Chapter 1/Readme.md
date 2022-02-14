@@ -198,3 +198,15 @@ Because once he's reached this number he has either:
 - or counted all other prisoners twice except for one which he's counted once. And the initial state of the lamp was 'on'
 
 ---
+
+## Exercise 5:
+The same warden has a different idea. He orders the prisoners to stand in line, and places red and blue hats on each of their heads. No prisoner knows the color of his own hat, or the color of any hat behind him, but he can see the hats of the prisoners in front. The warden starts at the back of the line and asks each prisoner to guess the color of his own hat. The prisoner can answer only “red” or “blue.” If he gives the wrong answer, he is fed to the crocodiles. If he answers correctly, he is freed. Each prisoner can hear the answer of the prisoners behind him, but cannot tell whether that prisoner was correct.
+
+### Solution:
+The first prisoner can't possibly know the color of his own hat, but he can see all other hats. Lets say that there are x number of red and y number of blue hats. He gives up on himself and says red if x mod 2 == 1 and blue otherwise.
+Once they hear the first answer each one memorize it as A. If they heard red A=1 otherwise A=0. Then any time they hear someone answering red they change A to ((A+1) mod 2).
+Once it's his turn to answer, he just says red if { number-of-red-hats-in-front-of-him mod 2 == A } and blue otherwise.<br/>
+Note that the last prisoner is seeing 0 red hats in front of him.<br/>
+If the first prisoner is honest, all others are guaranteed to give the right answer.
+
+---
