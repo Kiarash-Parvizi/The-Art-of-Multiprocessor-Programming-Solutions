@@ -146,12 +146,12 @@ In the producer–consumer fable, we assumed that Bob can see whether the can on
 
 ### Solution:
 Bob places a can on Alice's windowsill, ties one end of the string around the can and puts the other end in his house. Alice does the same thing so that she'll be able to notify Bob when pets finish eating and came back inside. Initially both cans are standing up, then Bob places some food in the yard and pulls his string.
-<br/>
+
 - From now on, when Alice wants to release the pets:
 1. She waits until the can on her side is down
 2. She releases the pets and resets the can on her windowsill
 3. When the pets finish the food and return, she pulls her string, knocking down the can on Bob's windowsill.
-<br/>
+
 - Bob does the following:
 1. He waits until the can on his side is down
 2. He puts food in the yard and resets the can on his windowsill
@@ -170,6 +170,8 @@ You are one of P recently arrested prisoners. The warden, a deranged computer sc
 > Each prisoner will visit the switch room arbitrarily often. More precisely, for any N, eventually each of you will visit the switch room at least N times.
 
 > At any time, any of you may declare: “we have all visited the switch room at least once.” If the claim is correct, I will set you free. If the claim is incorrect, I will feed all of you to the crocodiles. Choose wisely!
+
+Devise a winning strategy
 
 ### Solution:
 ### <span style="color:#58CF8F">_The initial state of the switch is off_:</span>
@@ -201,6 +203,8 @@ Because once he's reached this number he has either:
 
 ## Exercise 5:
 The same warden has a different idea. He orders the prisoners to stand in line, and places red and blue hats on each of their heads. No prisoner knows the color of his own hat, or the color of any hat behind him, but he can see the hats of the prisoners in front. The warden starts at the back of the line and asks each prisoner to guess the color of his own hat. The prisoner can answer only “red” or “blue.” If he gives the wrong answer, he is fed to the crocodiles. If he answers correctly, he is freed. Each prisoner can hear the answer of the prisoners behind him, but cannot tell whether that prisoner was correct.
+<br/>
+The prisoners are allowed to consult and agree on a strategy beforehand (while the warden listens in) but after being lined up, they cannot communicate any other way besides their answer of “red” or “blue.” Devise a strategy that allows at least P − 1 of P prisoners to be freed.
 
 ### Solution:
 The first prisoner can't possibly know the color of his own hat, but he can see all other hats. Lets say that there are x number of red and y number of blue hats. He gives up on himself and says red if x mod 2 == 1 and blue otherwise.
