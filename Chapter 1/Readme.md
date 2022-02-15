@@ -209,7 +209,7 @@ The prisoners are allowed to consult and agree on a strategy beforehand (while t
 ### Solution:
 The first prisoner can't possibly know the color of his own hat, but he can see all other hats. Lets say that there are x number of red and y number of blue hats. He gives up on himself and says red if x mod 2 == 1 and blue otherwise.
 Once they hear the first answer each one memorize it as A. If they heard red A=1 otherwise A=0. Then any time they hear someone answering red they change A to ((A+1) mod 2).
-Once it's his turn to answer, he just says red if { number-of-red-hats-in-front-of-him mod 2 == A } and blue otherwise.<br/>
+Once it's his turn to answer, he just says red if { number-of-red-hats-in-front-of-him mod 2 != A } and blue otherwise.<br/>
 Note that the last prisoner is seeing 0 red hats in front of him.<br/>
 If the first prisoner is honest, all others are guaranteed to give the right answer.
 
